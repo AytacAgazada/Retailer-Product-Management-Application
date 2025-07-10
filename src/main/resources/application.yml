@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: ProductManagementApplication
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 30s # <-- Bu çox önəmlidir
+    data:
+      redis:
+        host: localhost
+        port: 6379
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 16032005
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+server:
+  port: 8181
+
+logging:
+  level:
+    org.springframework.cache: DEBUG
+    org.springframework.data.redis: DEBUG
